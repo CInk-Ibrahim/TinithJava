@@ -37,10 +37,10 @@ public class OptBST {
 	}
 	printCostTable();
 	printRootTable();
-	BTreePrinter.printNode(costx(0, 14));
+	BTreePrinter.printNode(treePrinter(0, F.length - 1));
     }
 
-    public Node<String> costx(int i, int j) {
+    public Node<String> treePrinter(int i, int j) {
 	if (i > j) {
 	    return null;
 	}
@@ -48,12 +48,12 @@ public class OptBST {
 	String f = K[r];
 	Node<String> root = new Node<String>(f);
 	if (i == r) {
-	    root.right = costx(r + 1, j);
+	    root.right = treePrinter(r + 1, j);
 	} else if (j == r) {
-	    root.left = costx(i, r - 1);
+	    root.left = treePrinter(i, r - 1);
 	} else {
-	    root.left = costx(i, r - 1);
-	    root.right = costx(r + 1, j);
+	    root.left = treePrinter(i, r - 1);
+	    root.right = treePrinter(r + 1, j);
 	}
 	return root;
     }
